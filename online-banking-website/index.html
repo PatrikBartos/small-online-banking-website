@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetValue</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <div class="login-container">
+        <h1>Login</h1>
+        <form action="#" method="post">
+          <input
+            class="input-text"
+            type="text"
+            name="username"
+            placeholder="Benutzername"
+          />
+          <input
+            class="input-passwort"
+            type="password"
+            name="password"
+            placeholder="Pin"
+            maxlength="4"
+          />
+          <button class="btn" type="submit">Anmelden</button>
+        </form>
+      </div>
+    </nav>
+
+    <main class="app">
+      <!-- MOVEMENTS -->
+
+      <div class="movements-container">
+        <div class="subtitles">
+          <h3>Movements</h3>
+        </div>
+
+        <div class="movements container">
+          <div class="movements__row">
+            <div class="movements__type movements__type--deposit">
+              2 deposit
+            </div>
+            <div class="movements__value">4 000€</div>
+          </div>
+          <div class="movements__row">
+            <div class="movements__type movements__type--withdrawal">
+              1 withdrawal
+            </div>
+            <div class="movements__value">-378€</div>
+          </div>
+        </div>
+        <div class="balance-container">
+          <p></p>
+        </div>
+        <!-- Transfer -->
+
+        <div class="subtitlesT">
+          <h3>Transfer money</h3>
+        </div>
+
+        <form class="form form--transfer">
+          <input type="text" class="form__input form__input--to" />
+          <input type="number" class="form__input form__input--amount" />
+          <button class="form__btn form__btn--transfer">&rarr;</button>
+          <label class="form__label">Transfer to</label>
+          <label class="form__label">Amount</label>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
