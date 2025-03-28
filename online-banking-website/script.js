@@ -117,8 +117,7 @@ btnTransfer.addEventListener('click', function (e) {
     amount > 0 &&
     receiverAcc &&
     currentAccount.balance >= amount &&
-    receiverAcc?.username &&
-    currentAccount.username
+    receiverAcc?.username !== currentAccount.username
   ) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
