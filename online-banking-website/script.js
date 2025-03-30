@@ -14,6 +14,11 @@ const transferTo = document.querySelector('.form__input--to');
 const transferAmount = document.querySelector('.form__input--amount');
 const btnTransfer = document.querySelector('.form__btn--transfer');
 
+const income = document.querySelector('.income');
+const out = document.querySelector('.out');
+const interest = document.querySelector('.interest');
+
+// Accounts
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
@@ -48,7 +53,6 @@ const createUsernames = function (accs) {
       .join('');
   });
 };
-
 createUsernames(accounts);
 
 // Display Movements
@@ -71,22 +75,47 @@ const calcDisplay = function (movements) {
   });
 };
 
+// Balance
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   balanceBox.textContent = `${acc.balance}€`;
 };
 
-// Event handler
-
 let currentAccount;
 
+// Update UI
 const updateUI = function (acc) {
-  // Display movements
   calcDisplay(acc.movements);
 
   calcDisplayBalance(acc);
+
+  calcSummary(acc);
 };
 
+// Display Summary
+
+const calcSummary = function (acc) {
+  const incomes = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  income.textContent = `${incomes}€`;
+
+  const outSum = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  out.textContent = `${Math.abs(outSum)}€`;
+
+  const interestSum = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter((int, i, arr) => {
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  interest.textContent = `${interestSum}€`;
+};
+
+// Login
 loginbtn.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -100,17 +129,15 @@ loginbtn.addEventListener('click', function (e) {
 
     updateUI(currentAccount);
   }
-
-  // Update UI
 });
 
+// Transfer
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
 
   const amount = Number(transferAmount.value);
   const receiverAcc = accounts.find(acc => acc.username === transferTo.value);
 
-  // clear the boxes(just for design)
   transferAmount.value = transferTo.value = '';
 
   if (

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GetValue</title>
+    <title>Online-Banking</title>
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
@@ -16,13 +16,13 @@
   <body>
     <nav class="nav">
       <div class="login-container">
-        <h1>Login</h1>
+        <h1><a href="index.html">Login</a></h1>
         <form action="#" method="post">
           <input
             class="input-text"
             type="text"
             name="username"
-            placeholder="Benutzername"
+            placeholder="Username"
           />
           <input
             class="input-passwort"
@@ -31,16 +31,16 @@
             placeholder="Pin"
             maxlength="4"
           />
-          <button class="btn" type="submit">Anmelden</button>
+          <button class="btn" type="submit">Login</button>
         </form>
       </div>
     </nav>
 
     <main class="app">
-      <!-- MOVEMENTS -->
+      <!-- Movements -->
 
-      <div class="movements-container">
-        <div class="subtitles">
+      <div class="main-container">
+        <div class="subtitle__Movement">
           <h3>Movements</h3>
         </div>
 
@@ -58,12 +58,10 @@
             <div class="movements__value">-378€</div>
           </div>
         </div>
-        <div class="balance-container">
-          <p></p>
-        </div>
+        <div class="balance-container"></div>
         <!-- Transfer -->
 
-        <div class="subtitlesT">
+        <div class="subtitle__Transfer">
           <h3>Transfer money</h3>
         </div>
 
@@ -74,6 +72,22 @@
           <label class="form__label">Transfer to</label>
           <label class="form__label">Amount</label>
         </form>
+
+        <!-- Summary -->
+        <div class="summary__container">
+          <div class="summary__box">
+            income:
+            <div class="income"></div>
+          </div>
+          <div class="summary__box">
+            out:
+            <div class="out"></div>
+          </div>
+          <div class="summary__box">
+            interest:
+            <div class="interest"></div>
+          </div>
+        </div>
       </div>
     </main>
 
